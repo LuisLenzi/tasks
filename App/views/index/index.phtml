@@ -1,0 +1,63 @@
+<section>
+	<h3>Cadastrar nova Tarefa</h3>
+	<!-- Formulário cadastrar as tarefas-->
+	<form method="POST" action="/add">
+		<!--Nome/Name-->
+		<input type="text" name="Nome" id="Nome" placeholder="Nome da tarefa" />
+		<br />
+		<!--Descricao/Description-->
+		<input type="text" name="Definicao" id="Definicao" placeholder="Definição da tarefa" />
+		<br />
+		<!--Prazo/Due-->
+		<input type="date" name="Data" id="Data" placeholder="Prazo" />
+		<br />
+		<!--Prioridade/Priority-->
+		<input type="radio" name="Prioridade" id="low" value="low" />
+		<label for="low">Baixa</label>
+
+		<input type="radio" name="Prioridade" id="medium" value="medium" />
+		<label for="medium">Média</label>
+
+		<input type="radio" name="Prioridade" id="high" value="high" />
+		<label for="high">Alta</label>
+		<br />
+
+		<!--Finalizada/Finished-->
+		<input type="checkbox" name="Processo" id="Processo" value="1" />
+		<label for="Processo">Finalizada</label>
+		<br />
+
+		<!--Botão Salvar/Salvar-->
+		<input type="submit" name="Salvar" id="Salvar" value="Salvar" />
+	</form>
+</section>
+<!-- Tabela com as tarefas cadastradas-->
+<section>
+	<h3>Tarefas:</h3>
+	<div class="table-responsive">
+		<table class="table table-hover table-sm">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Definição</th>
+					<th>Prazo</th>
+					<th>Prioridade</th>
+					<th>Processo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->view->taskList as $taskItem) : ?>
+					<tr>
+						<td><?= $taskItem['ID'] ?></td>
+						<td><?= $taskItem['Nome'] ?></td>
+						<td><?= $taskItem['Definicao'] ?></td>
+						<td><?= $taskItem['Data'] ?></td>
+						<td><?= $taskItem['Prioridade'] ?></td>
+						<td><?= $taskItem['Processo'] ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+</section>
