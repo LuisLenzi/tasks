@@ -44,7 +44,6 @@ class Action
             count($url) < self::URL_WITH_PARAM
             || empty($url[self::URL_PARAM])
         ) {
-
             return null;
         }
 

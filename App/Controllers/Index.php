@@ -21,20 +21,18 @@ class Index extends Action
 		if (!is_null($this->getParam())) {
 			$this->view->result = $this->getParam();
 		}
-
 		$this->view->taskList = $this->task->fetchAll();
 		//formatar os dados das tarefas.
-
 		$this->render('index');
 	}
 
 	public function add()
 	{
 		$addResult = TaskResult::ADD_OK;
-		if($this->task->add($_POST) !== true) {
+		if ($this->task->add($_POST) !== true) {
 			$addResult = TaskResult::ADD_ERROR;
 		}
-		
+
 		$this->redirect("/index/{$addResult}");
 	}
 }
