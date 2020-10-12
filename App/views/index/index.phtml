@@ -1,39 +1,160 @@
 <section>
-	<h3>Cadastrar nova Tarefa</h3>
+	<style>
+		.title-cadastrar {
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			width: 100%;
+			padding-top: 5%;
+			padding-bottom: 5%;
+			position: center;
+			font: 700 3.5rem Montserrat;
+		}
+
+		#nome .Nome {
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50%;
+			height: 40px;
+			margin-left: 25%;
+			padding-left: 10px;
+			outline: 0;
+			border-color: #1E90FF;
+		}
+
+		#nome .Definicao {
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50%;
+			height: 40px;
+			margin-left: 25%;
+			padding-left: 10px;
+			outline: 0;
+			border-color: #1E90FF;
+		}
+
+		#nome .Data {
+			border-radius: 10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 25%;
+			height: 40px;
+			margin-left: 25%;
+			padding-left: 10px;
+			outline: 0;
+			border-color: #1E90FF;
+		}
+
+		#nome .PrioridadeLow {
+			margin-left: 25%;
+			cursor: pointer;
+		}
+
+		#nome .PrioridadeMedium {
+			cursor: pointer;
+		}
+
+		#nome .PrioridadeHigh {
+			cursor: pointer;
+		}
+
+		#nome .label-low {
+			padding-left: 10px;
+			padding-right: 40px;
+		}
+
+		#nome .label-medium {
+			padding-left: 10px;
+			padding-right: 40px;
+		}
+
+		#nome .label-high {
+			padding-left: 10px;
+			padding-right: 40px;
+		}
+
+		#nome .Processo {
+			margin-left: 43.5%;
+			margin-top: 40px;
+			margin-bottom: 40px;
+			cursor: pointer;
+		}
+
+		#nome .label-processo {
+			margin-top: 10px;
+			padding-left: 10px;
+			padding-right: 20px;
+			font-weight: 40px;
+			font: 700 1.5rem Montserrat;
+		}
+
+		#nome .save-button {
+			background-color: #1E90FF;
+			color: white;
+			width: 17.5%;
+			height: 45px;
+			margin-left: 41.5%;
+			margin-top: 10px;
+			border-radius: 10px;
+			outline: 0;
+			border: 0;
+		}
+
+		#nome .save-button:hover {
+			scale: 1.5px;
+			opacity: 90%;
+			cursor: pointer;
+		}
+	</style>
+	<h3 class="title-cadastrar">Cadastrar</h3>
 	<!-- Formulário cadastrar as tarefas-->
-	<form method="POST" action="/add">
+	<form id="nome" method="POST" action="/add">
 		<!--Nome/Name-->
-		<input type="text" name="Nome" id="Nome" placeholder="Nome da tarefa" />
+		<input class="Nome" type="text" name="Nome" id="Nome" placeholder="Nome da tarefa" />
 		<br />
 		<!--Descricao/Description-->
-		<input type="text" name="Definicao" id="Definicao" placeholder="Definição da tarefa" />
+		<input class="Definicao" type="text" name="Definicao" id="Definicao" placeholder="Definição da tarefa" />
 		<br />
 		<!--Prazo/Due-->
-		<input type="date" name="Data" id="Data" placeholder="Prazo" />
+		<input class="Data" type="date" name="Data" id="Data" placeholder="Prazo" />
 		<br />
 		<!--Prioridade/Priority-->
-		<input type="radio" name="Prioridade" id="low" value="low" />
-		<label for="low">Baixa</label>
+		<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="low" />
+		<label class="label-low" for="low">Baixa</label>
 
-		<input type="radio" name="Prioridade" id="medium" value="medium" />
-		<label for="medium">Média</label>
+		<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="medium" />
+		<label class="label-medium" for="medium">Média</label>
 
-		<input type="radio" name="Prioridade" id="high" value="high" />
-		<label for="high">Alta</label>
+		<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="high" />
+		<label class="label-high" for="high">Alta</label>
 		<br />
 
 		<!--Finalizada/Finished-->
-		<input type="checkbox" name="Processo" id="Processo" value="1" />
-		<label for="Processo">Finalizada</label>
+		<input class="Processo" type="checkbox" name="Processo" id="Processo" value="1" />
+		<label class="label-processo" for="Processo">Finalizada?</label>
 		<br />
 
 		<!--Botão Salvar/Salvar-->
-		<input type="submit" name="Salvar" id="Salvar" value="Salvar" />
+		<input class="save-button" type="submit" name="Salvar" id="Salvar" value="Salvar" />
 	</form>
 </section>
 <!-- Tabela com as tarefas cadastradas-->
 <section>
-	<h3>Tarefas:</h3>
+	<style>
+		.title-tarefas {
+			display: flex;
+			justify-content: left;
+			text-align: left;
+			width: 100%;
+			padding: 3%;
+		}
+	</style>
+	<h3 class="title-tarefas">Tarefas:</h3>
 	<div class="table-responsive">
 		<table class="table table-hover table-sm">
 			<thead>
