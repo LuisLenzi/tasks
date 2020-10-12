@@ -24,6 +24,21 @@
 			border-color: #1E90FF;
 		}
 
+		#nome .Nome:hover{
+			transform: scale(1.1);
+			transition: 1s;
+		}
+
+		#nome .Definicao:hover{
+			transform: scale(1.1);
+			transition: 1s;
+		}
+
+		#nome .Data:hover{
+			transform: scale(1.1);
+			transition: 1s;
+		}
+
 		#nome .Definicao {
 			border-radius: 10px;
 			display: flex;
@@ -106,11 +121,24 @@
 		}
 
 		#nome .save-button:hover {
-			scale: 1.5px;
 			opacity: 90%;
 			cursor: pointer;
+			transform: scale(1.1);
+			transition: 1s;
+		}
+
+		.animation{
+			display: flex;
+			padding-top: 30px;
+			margin-right: 50%;
+			margin-left: 40%;
+			justify-content: center;
+			align-items: center;
+
 		}
 	</style>
+	<script class="animation" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+	<lottie-player class="animation" src="https://assets7.lottiefiles.com/packages/lf20_5buYwf.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
 	<h3 class="title-cadastrar">Cadastrar</h3>
 	<!-- Formulário cadastrar as tarefas-->
 	<form id="nome" method="POST" action="/add">
