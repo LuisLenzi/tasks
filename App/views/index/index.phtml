@@ -5,12 +5,16 @@
 		float: left;
 		width: 45%;
 		display: flex;
+		border-color: #111111;
+		box-shadow: 7px 7px 15px #C4D9FF;
 	}
 
 	.card-header {
-		font: 700 3.0rem Montserrat;
+		font: 700 2.0rem Montserrat;
 		width: 100%;
 		padding: 5%;
+		background-color: #407AFF;
+		color: white;
 	}
 
 	.card-text {
@@ -183,17 +187,17 @@
 				<input class="Data" type="date" name="Data" id="Data" required />
 				<br />
 				<!--Prioridade/Priority-->
-				<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="low" />
+				<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="Baixa" />
 				<label class="label-low" for="low">Baixa</label>
 
-				<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="medium" />
+				<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="Média" />
 				<label class="label-medium" for="medium">Média</label>
 
-				<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="high" />
+				<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="Alta" />
 				<label class="label-high" for="high">Alta</label>
 				<br />
 				<!--Finalizada/Finished-->
-				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="1" />
+				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="Finalizada" />
 				<label class="label-processo" for="Processo">Finalizada?</label>
 				<br />
 				<!--Botão Alterar-->
@@ -211,17 +215,35 @@
 		.title-tarefas {
 			display: flex;
 			justify-content: left;
-			text-align: left;
 			width: 100%;
-			padding: 3%;
+			margin-left: 3%;
+			padding-top: 3%;
+		}
+
+		.subtitle-tarefas {
+			display: flex;
+			justify-content: left;
+			width: 100%;
+			margin-left: 3%;
+		}
+
+		.table-responsive{
+			display: flex;
+			justify-content: left;
+			width: 95%;
+			margin-left: 3%;
+			margin-top: 3%;
+			font: 700 1.0rem Montserrat;
+
 		}
 	</style>
-	<h3 class="title-tarefas">Tarefas:</h3>
+	<h2 class="title-tarefas">Tarefas</h2>
+	<small class="subtitle-tarefas">Abaixo, você poderá visualizar uma lista detalhada dos cadastros</small>
 	<div class="table-responsive">
 		<table class="table table-hover table-sm">
 			<thead>
 				<tr>
-					<th>ID</th>
+					<th>Item</th>
 					<th>Nome</th>
 					<th>Definição</th>
 					<th>Prazo</th>

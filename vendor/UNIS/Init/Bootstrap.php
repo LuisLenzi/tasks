@@ -30,7 +30,7 @@ abstract class Bootstrap
 		});
 		//error page
 		if (is_null($this->controller)) {
-			echo 'ERROR 404 - Page Not Found';
+			echo 'Ops, página não encontrada :^(';
 		}
 	}
 
