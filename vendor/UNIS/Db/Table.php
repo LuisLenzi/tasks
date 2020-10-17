@@ -17,7 +17,7 @@ abstract class Table
         $query = "INSERT INTO {$this->table} (";
         $query .= implode(', ', $columns);
         $query .= ') VALUES (';
-        $query = implode(', ', $values) . ')';
+        $query .= implode(', ', $values) . ')';
         $stmt = $this->db->prepare($query);
         try {
             return $stmt->execute();

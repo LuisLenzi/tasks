@@ -1,175 +1,208 @@
+<style>
+	.card {
+		margin-left: 3%;
+		margin-top: 3%;
+		float: left;
+		width: 45%;
+		display: flex;
+	}
+
+	.card-header {
+		font: 700 3.0rem Montserrat;
+		width: 100%;
+		padding: 5%;
+	}
+
+	.card-text {
+		margin-left: 10%;
+	}
+
+	#nome .Nome {
+		display: flex;
+		width: 80%;
+		border-radius: 10px;
+		height: 40px;
+		margin-left: 10%;
+		outline: 0;
+		border-color: #1E90FF;
+	}
+
+	#nome .Nome:hover {
+		transform: scale(1.02);
+		transition: 1s;
+	}
+
+	#nome .Definicao:hover {
+		transform: scale(1.02);
+		transition: 1s;
+	}
+
+	#nome .Data:hover {
+		transform: scale(1.04);
+		transition: 1s;
+	}
+
+	#nome .Definicao {
+		margin-left: 10%;
+		display: flex;
+		border-radius: 10px;
+		width: 80%;
+		height: 40px;
+		padding-left: 10px;
+		outline: 0;
+		border-color: #1E90FF;
+	}
+
+	#nome .Data {
+		margin-left: 10%;
+		display: flex;
+		border-radius: 10px;
+		height: 40px;
+		padding-left: 10px;
+		outline: 0;
+		border-color: #1E90FF;
+	}
+
+	#nome .PrioridadeLow {
+		margin-left: 10%;
+		cursor: pointer;
+	}
+
+	#nome .PrioridadeMedium {
+		cursor: pointer;
+	}
+
+	#nome .PrioridadeHigh {
+		cursor: pointer;
+	}
+
+	#nome .label-low {
+		padding-left: 10px;
+		padding-right: 40px;
+	}
+
+	#nome .label-medium {
+		padding-left: 10px;
+		padding-right: 40px;
+	}
+
+	#nome .label-high {
+		padding-left: 10px;
+		padding-right: 40px;
+	}
+
+	#nome .Processo {
+		margin-left: 30%;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		cursor: pointer;
+	}
+
+	#nome .label-processo {
+		margin-top: 10px;
+		padding-left: 10px;
+		padding-right: 20px;
+		font-weight: 40px;
+		font: 700 1.5rem Montserrat;
+	}
+
+	#nome .save-button {
+		float: left;
+		background-color: #1E90FF;
+		color: white;
+		width: 35%;
+		height: 45px;
+		margin-top: 10px;
+		margin-left: 10%;
+		border-radius: 10px;
+		margin-bottom: 10%;
+		outline: 0;
+		border: 0;
+	}
+
+	#nome .save-button:hover {
+		opacity: 90%;
+		cursor: pointer;
+		transform: scale(1.05);
+		transition: 1s;
+	}
+
+	#nome .update-button {
+		float: right;
+		background-color: #1E90FF;
+		color: white;
+		width: 35%;
+		margin-right: 10%;
+		height: 45px;
+		margin-top: 10px;
+		border-radius: 10px;
+		outline: 0;
+		border: 0;
+	}
+
+	#nome .update-button:hover {
+		opacity: 90%;
+		cursor: pointer;
+		transform: scale(1.05);
+		transition: 1s;
+	}
+
+	.animation {
+		float: right;
+	}
+
+	#nome .text {
+		margin-left: 10%;
+	}
+</style>
+
 <section>
-	<style>
-		.title-cadastrar {
-			display: flex;
-			justify-content: center;
-			text-align: center;
-			width: 100%;
-			padding-top: 5%;
-			padding-bottom: 5%;
-			position: center;
-			font: 700 3.5rem Montserrat;
-		}
+	<div class="animation">
+		<script class="animation" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<lottie-player class="animation" src="https://assets7.lottiefiles.com/packages/lf20_5buYwf.json" background="transparent" speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player>
+	</div>
+	<div class="card">
+		<div class="card-header">
+			Cadastrar
+		</div>
+		<div class="card-body">
+			<!-- Formulário cadastrar as tarefas-->
+			<p class="card-text"><small class="text-muted">Preencha o formulário abaixo para fazer seu cadastro</small></p>
+			<form name="cadastrar" id="nome" method="POST" action="/add">
+				<!--Nome/Name-->
+				<label class="text" for="Nome">Nome da tarefa<sup class="text-danger"></sup></label>
+				<input class="Nome" type="text" name="Nome" id="Nome" required />
+				<br />
+				<!--Descricao/Description-->
+				<label class="text" for="Definicao">Definição da tarefa<sup class="text-danger"></sup></label>
+				<input class="Definicao" type="text" name="Definicao" id="Definicao" required />
+				<br />
+				<!--Prazo/Due-->
+				<label class="text" for="Prazo">Data <sup class="text-danger"></sup></label>
+				<input class="Data" type="date" name="Data" id="Data" required />
+				<br />
+				<!--Prioridade/Priority-->
+				<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="low" />
+				<label class="label-low" for="low">Baixa</label>
 
-		#nome .Nome {
-			border-radius: 10px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 50%;
-			height: 40px;
-			margin-left: 25%;
-			padding-left: 10px;
-			outline: 0;
-			border-color: #1E90FF;
-		}
+				<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="medium" />
+				<label class="label-medium" for="medium">Média</label>
 
-		#nome .Nome:hover{
-			transform: scale(1.1);
-			transition: 1s;
-		}
+				<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="high" />
+				<label class="label-high" for="high">Alta</label>
+				<br />
+				<!--Finalizada/Finished-->
+				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="1" />
+				<label class="label-processo" for="Processo">Finalizada?</label>
+				<br />
+				<!--Botão Salvar/Salvar-->
+				<input class="save-button" type="submit" name="Salvar" id="Salvar" value="Salvar" />
+				<!--Botão Salvar/Salvar-->
+				<input class="update-button" type="submit" name="Alterar" id="Alterar" value="Alterar" />
+			</form>
+		</div>
+	</div>
 
-		#nome .Definicao:hover{
-			transform: scale(1.1);
-			transition: 1s;
-		}
-
-		#nome .Data:hover{
-			transform: scale(1.1);
-			transition: 1s;
-		}
-
-		#nome .Definicao {
-			border-radius: 10px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 50%;
-			height: 40px;
-			margin-left: 25%;
-			padding-left: 10px;
-			outline: 0;
-			border-color: #1E90FF;
-		}
-
-		#nome .Data {
-			border-radius: 10px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 25%;
-			height: 40px;
-			margin-left: 25%;
-			padding-left: 10px;
-			outline: 0;
-			border-color: #1E90FF;
-		}
-
-		#nome .PrioridadeLow {
-			margin-left: 25%;
-			cursor: pointer;
-		}
-
-		#nome .PrioridadeMedium {
-			cursor: pointer;
-		}
-
-		#nome .PrioridadeHigh {
-			cursor: pointer;
-		}
-
-		#nome .label-low {
-			padding-left: 10px;
-			padding-right: 40px;
-		}
-
-		#nome .label-medium {
-			padding-left: 10px;
-			padding-right: 40px;
-		}
-
-		#nome .label-high {
-			padding-left: 10px;
-			padding-right: 40px;
-		}
-
-		#nome .Processo {
-			margin-left: 43.5%;
-			margin-top: 40px;
-			margin-bottom: 40px;
-			cursor: pointer;
-		}
-
-		#nome .label-processo {
-			margin-top: 10px;
-			padding-left: 10px;
-			padding-right: 20px;
-			font-weight: 40px;
-			font: 700 1.5rem Montserrat;
-		}
-
-		#nome .save-button {
-			background-color: #1E90FF;
-			color: white;
-			width: 17.5%;
-			height: 45px;
-			margin-left: 41.5%;
-			margin-top: 10px;
-			border-radius: 10px;
-			outline: 0;
-			border: 0;
-		}
-
-		#nome .save-button:hover {
-			opacity: 90%;
-			cursor: pointer;
-			transform: scale(1.1);
-			transition: 1s;
-		}
-
-		.animation{
-			display: flex;
-			padding-top: 30px;
-			margin-right: 50%;
-			margin-left: 40%;
-			justify-content: center;
-			align-items: center;
-
-		}
-	</style>
-	<script class="animation" src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-	<lottie-player class="animation" src="https://assets7.lottiefiles.com/packages/lf20_5buYwf.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-	<h3 class="title-cadastrar">Cadastrar</h3>
-	<!-- Formulário cadastrar as tarefas-->
-	<form id="nome" method="POST" action="/add">
-		<!--Nome/Name-->
-		<input class="Nome" type="text" name="Nome" id="Nome" placeholder="Nome da tarefa" />
-		<br />
-		<!--Descricao/Description-->
-		<input class="Definicao" type="text" name="Definicao" id="Definicao" placeholder="Definição da tarefa" />
-		<br />
-		<!--Prazo/Due-->
-		<input class="Data" type="date" name="Data" id="Data" placeholder="Prazo" />
-		<br />
-		<!--Prioridade/Priority-->
-		<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="low" />
-		<label class="label-low" for="low">Baixa</label>
-
-		<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="medium" />
-		<label class="label-medium" for="medium">Média</label>
-
-		<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="high" />
-		<label class="label-high" for="high">Alta</label>
-		<br />
-
-		<!--Finalizada/Finished-->
-		<input class="Processo" type="checkbox" name="Processo" id="Processo" value="1" />
-		<label class="label-processo" for="Processo">Finalizada?</label>
-		<br />
-
-		<!--Botão Salvar/Salvar-->
-		<input class="save-button" type="submit" name="Salvar" id="Salvar" value="Salvar" />
-	</form>
 </section>
 <!-- Tabela com as tarefas cadastradas-->
 <section>
@@ -210,3 +243,5 @@
 		</table>
 	</div>
 </section>
+
+</html>

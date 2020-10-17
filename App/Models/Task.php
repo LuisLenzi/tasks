@@ -6,5 +6,5 @@ use UNIS\Db\Table;
 
 class Task extends Table
 {
-    protected $table = "projeto";
+    protected $table = "tasks";
 }
