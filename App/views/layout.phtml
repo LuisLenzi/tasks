@@ -15,10 +15,17 @@
 		font-family: 'Montserrat', sans-serif;
 	}
 
-	.navbar-brand {
+	.navbar {
 		position: center;
-		margin-top: 0.4%;
 		margin-bottom: 0.4%;
+		padding: 2%;
+		background-color: #407AFF;
+		color: white;
+		font: 700 1.5rem Montserrat;
+	}
+
+	.navbar .text{
+		color: white;
 	}
 
 	.alert {
@@ -29,8 +36,8 @@
 </style>
 
 <body>
-	<nav class="navbar navbar-dark bg-primary">
-		<a class="navbar-brand" href="\">Gerenciador de Tarefas</a>
+	<nav class="navbar">
+		<a class="text" href="\">Gerenciador de Tarefas</a>
 	</nav>
 	<!--messages-->
 	<?php if (isset($this->view->result)) : ?>
