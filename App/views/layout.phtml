@@ -60,10 +60,37 @@
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-			</div>
+			<?php elseif ($this->view->result == 'EDIT_OK') : ?>
+				<div class="alert alert-success" role="alert">
+					Tarefa atualizada com sucesso!
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php elseif ($this->view->result == 'EDIT_ERROR') : ?>
+				<div class="alert alert-danger" role="alert">
+					A tarefa não foi editada pois não sofreu nenhuma alteração!
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php elseif ($this->view->result == 'DELETE_OK') : ?>
+				<div class="alert alert-sucess" role="alert">
+					Tarefa deletada com sucesso!
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php elseif ($this->view->result == 'DELETE_ERROR') : ?>
+				<div class="alert alert-danger" role="alert">
+					Erro ao deletar tarefa!
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php endif ?>
 		<?php endif ?>
-	<?php endif ?>
-	<?= $this->content() ?>
+		<?= $this->content() ?>
 </body>
 <footer>
 	<!-- JS, Popper.js, and jQuery -->

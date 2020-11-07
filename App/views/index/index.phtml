@@ -96,6 +96,8 @@
 	}
 
 	#nome .Processo {
+		align-items: center;
+		justify-content: center;
 		margin-left: 30%;
 		margin-top: 40px;
 		margin-bottom: 40px;
@@ -103,6 +105,8 @@
 	}
 
 	#nome .label-processo {
+		align-items: center;
+		justify-content: center;
 		margin-top: 10px;
 		padding-left: 10px;
 		padding-right: 20px;
@@ -111,12 +115,14 @@
 	}
 
 	#nome .save-button {
-		float: right;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		background-color: #407AFF;
 		color: white;
 		width: 35%;
-		margin-right: 10%;
-		height: 45px;
+		margin-left: 32.5%;
+		height: 50px;
 		margin-top: 10px;
 		border-radius: 10px;
 		outline: 0;
@@ -124,27 +130,6 @@
 	}
 
 	#nome .save-button:hover {
-		opacity: 90%;
-		cursor: pointer;
-		transform: scale(1.05);
-		transition: 1s;
-	}
-
-	#nome .update-button {
-		float: left;
-		background-color: #407AFF;
-		color: white;
-		width: 35%;
-		height: 45px;
-		margin-top: 10px;
-		margin-left: 10%;
-		border-radius: 10px;
-		margin-bottom: 10%;
-		outline: 0;
-		border: 0;
-	}
-
-	#nome .update-button:hover {
 		opacity: 90%;
 		cursor: pointer;
 		transform: scale(1.05);
@@ -200,10 +185,8 @@
 				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="Finalizada" />
 				<label class="label-processo" for="Processo">Finalizada?</label>
 				<br />
-				<!--Botão Alterar-->
-				<input class="update-button" type="submit" name="Alterar" id="Alterar" value="Alterar" />
 				<!--Botão Salvar-->
-				<input class="save-button" type="submit" name="Salvar" id="Salvar" value="Salvar" />
+				<input class="save-button" type="submit" name="<?=$this->view->form->getActionButton()?>" id="<?=$this->view->form->getActionButton()?>" value="<?=$this->view->form->getActionButtonText()?>" />
 			</form>
 		</div>
 	</div>
@@ -249,6 +232,8 @@
 					<th>Prazo</th>
 					<th>Prioridade</th>
 					<th>Processo</th>
+					<th>Editar</th>
+					<th>Apagar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -260,6 +245,12 @@
 						<td><?= $taskItem['Data'] ?></td>
 						<td><?= $taskItem['Prioridade'] ?></td>
 						<td><?= $taskItem['Processo'] ?></td>
+						<td>
+							<a href="/edit/<?= $taskItem['ID']?>" class="btn btn-warning">Editar</a>
+						</td>
+						<td>
+							<a href="/delete/<?= $taskItem['ID']?>" class="btn btn-danger">Apagar</a>
+						</td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>

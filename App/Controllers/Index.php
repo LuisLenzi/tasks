@@ -5,6 +5,7 @@ namespace App\Controllers;
 use UNIS\Controller\Action;
 use UNIS\Di\Container;
 use App\Models\TaskResult;
+use App\Models\TaskFormat;
 
 class Index extends Action
 {
@@ -14,6 +15,7 @@ class Index extends Action
 	{
 		parent::__construct();
 		$this->task = Container::getClass('task');
+		$this->form = Container::getClass('form');
 	}
 
 	public function index()
@@ -22,7 +24,9 @@ class Index extends Action
 			$this->view->result = $this->getParam();
 		}
 		$this->view->taskList = $this->task->fetchAll();
-		//formatar os dados das tarefas.
+		TaskFormat::taskListFormat($this->view->taskList);
+		$this->form->setAction('index');
+		$this->view->form = $this->form;
 		$this->render('index');
 	}
 
@@ -34,5 +38,39 @@ class Index extends Action
 		}
 
 		$this->redirect("/index/{$addResult}");
+	}
+
+	public function edit()
+	{
+		$this->view->taskEdit = $this->task->find($this->getParam());
+
+		if($this->view->taskEdit == false) {
+			$this->redirect("/index");
+		}
+
+		$this->form->setAction('edit');
+		$this->view->form = $this->form;
+
+		$this->render('edit');
+	}
+
+	public function update()
+	{
+		$editResult = TaskResult::EDIT_OK;
+		if($this->task->update($_POST, $_POST['id']) !== 1) {
+			$editResult = TaskResult::EDIT_ERROR;
+		}
+		
+		$this->redirect("/index/{$editResult}");
+	}
+
+	public function delete()
+	{
+		$deleteResult = TaskResult::DELETE_OK;
+		if ($this->task->delete($_POST) !== true) {
+			$deleteResult = TaskResult::DELETE_ERROR;
+		}
+
+		$this->redirect("/index/{$deleteResult}");
 	}
 }
