@@ -10,18 +10,18 @@ abstract class Table
 	public function __construct(\Pdo $db)
 	{
 		$this->db = $db;
-	}	
+	}
 
 	public function add(array $data)
 	{
 		$columns = array_keys(self::prepareInsert($data));
 		$values = array_values(self::prepareInsert($data));
-	
+
 		$query = "INSERT INTO {$this->table} (";
 		$query .= implode(', ', $columns);
 		$query .= ') VALUES (';
 		$query .= implode(', ', $values) . ')';
-		
+
 		$stmt = $this->db->prepare($query);
 
 		try {
@@ -69,16 +69,21 @@ abstract class Table
 		} catch (\PDOException $e) {
 			return $e->getMessage();
 		}
-
 	}
 
 	public function delete(int $id)
 	{
-		$query = "DELETE FROM {$this->table} WHERE ID=:ID";
+		$query = "DELETE FROM {$this->table} WHERE ID=:id";
 
 		$stmt = $this->db->prepare($query);
-		$stmt->bindParam(":ID", $id);
-		$stmt->execute();
+		$stmt->bindParam(":id", $id);
+
+		try {
+			$stmt->execute();
+			return $stmt->rowCount();
+		} catch (\PDOException $e) {
+			echo $e->getMessage();
+		}
 	}
 
 	private function prepareInsert(array $data)
@@ -86,10 +91,10 @@ abstract class Table
 		array_shift($data);
 		array_pop($data);
 
-		array_walk($data, function(&$value) {
+		array_walk($data, function (&$value) {
 			$value = $this->db->quote($value);
 		});
-		
+
 		return $data;
 	}
 
@@ -99,7 +104,7 @@ abstract class Table
 		array_shift($data);
 		array_pop($data);
 
-		foreach($data as $key => $value) {
+		foreach ($data as $key => $value) {
 			array_push($updateSet, "{$key}=" . $this->db->quote($value));
 		}
 

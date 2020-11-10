@@ -1,16 +1,19 @@
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,300;1,400;1,600;1,700&display=swap');
+
 	.card {
-		margin-left: 3%;
-		margin-top: 3%;
-		float: left;
+		margin-top: 5%;
+		margin-right: 5%;
+		float: right;
 		width: 45%;
-		display: flex;
 		border-color: #111111;
 		box-shadow: 7px 7px 15px #C4D9FF;
 	}
 
 	.card-header {
-		font: 700 2.0rem Montserrat;
+		display: flex;
+		justify-content: center;
+		font: 500 2.0rem Montserrat;
 		width: 100%;
 		padding: 5%;
 		background-color: #407AFF;
@@ -18,13 +21,22 @@
 	}
 
 	.card-text {
+		font: 600 1.5rem Montserrat;
+		padding-right: 15%;
+		margin-right: 5%;
 		margin-left: 10%;
+		margin-top: 2.5%;
+		margin-bottom: 5%;
+	}
+
+	.card-body {
+		font: 500 1.25rem Montserrat;
 	}
 
 	#nome .Nome {
 		display: flex;
 		width: 80%;
-		border-radius: 10px;
+		border-radius: 5px;
 		height: 40px;
 		margin-left: 10%;
 		outline: 0;
@@ -49,7 +61,7 @@
 	#nome .Definicao {
 		margin-left: 10%;
 		display: flex;
-		border-radius: 10px;
+		border-radius: 5px;
 		width: 80%;
 		height: 40px;
 		padding-left: 10px;
@@ -58,9 +70,10 @@
 	}
 
 	#nome .Data {
+		font: 500 1.0rem Montserrat;
 		margin-left: 10%;
 		display: flex;
-		border-radius: 10px;
+		border-radius: 5px;
 		height: 40px;
 		padding-left: 10px;
 		outline: 0;
@@ -68,29 +81,48 @@
 	}
 
 	#nome .PrioridadeLow {
-		margin-left: 10%;
+		display: inline;
+		justify-content: center;
+		align-items: center;
+		margin-top: 5%;
+		margin-left: 20%;
 		cursor: pointer;
 	}
 
 	#nome .PrioridadeMedium {
+		display: inline;
+		justify-content: center;
+		align-items: center;
 		cursor: pointer;
 	}
 
 	#nome .PrioridadeHigh {
+		display: inline;
+		justify-content: center;
+		align-items: center;
 		cursor: pointer;
 	}
 
 	#nome .label-low {
+		display: inline;
+		justify-content: center;
+		align-items: center;
 		padding-left: 10px;
 		padding-right: 40px;
 	}
 
 	#nome .label-medium {
+		display: inline;
+		justify-content: center;
+		align-items: center;
 		padding-left: 10px;
 		padding-right: 40px;
 	}
 
 	#nome .label-high {
+		display: inline;
+		justify-content: center;
+		align-items: center;
 		padding-left: 10px;
 		padding-right: 40px;
 	}
@@ -98,20 +130,20 @@
 	#nome .Processo {
 		align-items: center;
 		justify-content: center;
-		margin-left: 30%;
+		display: inline;
+		margin-left: 35%;
 		margin-top: 40px;
-		margin-bottom: 40px;
+		margin-bottom: 5%;
 		cursor: pointer;
 	}
 
 	#nome .label-processo {
 		align-items: center;
 		justify-content: center;
-		margin-top: 10px;
-		padding-left: 10px;
-		padding-right: 20px;
-		font-weight: 40px;
-		font: 700 1.5rem Montserrat;
+		margin-top: 10%;
+		margin-left: 5%;
+		font: 700 1.25rem Montserrat;
+		font-style: italic;
 	}
 
 	#nome .save-button {
@@ -120,10 +152,11 @@
 		align-items: center;
 		background-color: #407AFF;
 		color: white;
-		width: 35%;
-		margin-left: 32.5%;
+		width: 45%;
+		margin-left: 27.5%;
+		margin-bottom: 5%;
 		height: 50px;
-		margin-top: 10px;
+		margin-top: 5%;
 		border-radius: 10px;
 		outline: 0;
 		border: 0;
@@ -137,8 +170,9 @@
 	}
 
 	.animation {
-		float: right;
-		margin-right: 3%;
+		margin-top: 12.5%;
+		float: left;
+		margin-left: 5%;
 	}
 
 	#nome .text {
@@ -149,7 +183,7 @@
 <section>
 	<div class="animation">
 		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-		<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xRmNN8.json" background="transparent" speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player>
+		<lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xRmNN8.json" background="transparent" speed="1" style="width: 550px; height: 550px;" loop autoplay></lottie-player>
 	</div>
 	<div class="card">
 		<div class="card-header">
@@ -159,9 +193,11 @@
 			<!-- Formulário cadastrar as tarefas-->
 			<p class="card-text"><small class="text-muted">Preencha o formulário abaixo para fazer seu cadastro</small></p>
 			<form name="cadastrar" id="nome" method="POST" action="/add">
+				<!--ID/id-->
+				<input type="hidden" id="id" name="id" value="<?= $this->view->taskEdit['ID'] ?? ''; ?>" />
 				<!--Nome/Name-->
 				<label class="text" for="Nome">Nome da tarefa<sup class="text-danger"></sup></label>
-				<input class="Nome" type="text" name="Nome" id="Nome" required />
+				<input class="Nome" type="text" name="Nome" id="Nome" value="<?= $this->view->taskEdit['Nome'] ?? ''; ?>" />
 				<br />
 				<!--Descricao/Description-->
 				<label class="text" for="Definicao">Definição da tarefa<sup class="text-danger"></sup></label>
@@ -186,7 +222,7 @@
 				<label class="label-processo" for="Processo">Finalizada?</label>
 				<br />
 				<!--Botão Salvar-->
-				<input class="save-button" type="submit" name="<?=$this->view->form->getActionButton()?>" id="<?=$this->view->form->getActionButton()?>" value="<?=$this->view->form->getActionButtonText()?>" />
+				<input class="save-button" type="submit" name="<?= $this->view->form->getActionButton() ?>" id="<?= $this->view->form->getActionButton() ?>" value="<?= $this->view->form->getActionButton() ?>" />
 			</form>
 		</div>
 	</div>
@@ -197,35 +233,39 @@
 	<style>
 		.title-tarefas {
 			display: flex;
-			justify-content: left;
+			justify-content: center;
+			padding-top: 10%;
 			width: 100%;
-			margin-left: 3%;
-			padding-top: 3%;
+			font: 700 3rem Montserrat;
 		}
 
 		.subtitle-tarefas {
 			display: flex;
-			justify-content: left;
+			justify-content: center;
 			width: 100%;
-			margin-left: 3%;
+			font: 500 1.25rem Montserrat;
+			padding-bottom: 7.5%;
 		}
 
-		.table-responsive{
+		.table-responsive {
 			display: flex;
 			justify-content: left;
+			align-items: center;
 			width: 95%;
+			border-radius: 5px;
 			margin-left: 3%;
 			margin-top: 3%;
-			font: 700 1.0rem Montserrat;
+			font: 400 1.1rem Montserrat;
 
 		}
+
 	</style>
 	<h2 class="title-tarefas">Tarefas</h2>
 	<small class="subtitle-tarefas">Abaixo, você poderá visualizar uma lista detalhada dos cadastros</small>
-	<div class="table-responsive">
-		<table class="table table-hover table-sm">
+	<div id="table" class="table-responsive">
+		<table class="table table-striped table-hover table-sm">
 			<thead>
-				<tr>
+				<tr class="text-white" style="background-color:#407AFF">
 					<th>Item</th>
 					<th>Nome</th>
 					<th>Definição</th>
@@ -246,10 +286,10 @@
 						<td><?= $taskItem['Prioridade'] ?></td>
 						<td><?= $taskItem['Processo'] ?></td>
 						<td>
-							<a href="/edit/<?= $taskItem['ID']?>" class="btn btn-warning">Editar</a>
+							<a href="/edit/<?= $taskItem['ID'] ?>" class="btn btn-warning">Editar</a>
 						</td>
 						<td>
-							<a href="/delete/<?= $taskItem['ID']?>" class="btn btn-danger">Apagar</a>
+							<a href="/delete/<?= $taskItem['ID'] ?>" class="btn btn-danger">Apagar</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>

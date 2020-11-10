@@ -31,7 +31,7 @@ class Form
 	private function isIndex($action)
 	{
 		$this->action = '/add';
-		$this->actionButton = 'save';
+		$this->actionButton = 'Salvar';
 		$this->actionButtonText = 'Salvar';
 
 		if($action != 'index') {

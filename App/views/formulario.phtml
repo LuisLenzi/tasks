@@ -1,17 +1,20 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,300;1,400;1,600;1,700&display=swap');
+
     .card {
-        margin-left: 3%;
-        margin-top: 3%;
-        margin-bottom: 3%;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-bottom: 5%;
         float: left;
         width: 45%;
-        display: flex;
         border-color: #111111;
         box-shadow: 7px 7px 15px #C4D9FF;
     }
 
     .card-header {
-        font: 700 2.0rem Montserrat;
+        display: flex;
+        justify-content: center;
+        font: 500 2.0rem Montserrat;
         width: 100%;
         padding: 5%;
         background-color: #407AFF;
@@ -19,13 +22,22 @@
     }
 
     .card-text {
+        font: 600 1.5rem Montserrat;
+        padding-right: 15%;
+        margin-right: 5%;
         margin-left: 10%;
+        margin-top: 2.5%;
+        margin-bottom: 5%;
+    }
+
+    .card-body {
+        font: 500 1.25rem Montserrat;
     }
 
     #nome .Nome {
         display: flex;
         width: 80%;
-        border-radius: 10px;
+        border-radius: 5px;
         height: 40px;
         margin-left: 10%;
         outline: 0;
@@ -50,7 +62,7 @@
     #nome .Definicao {
         margin-left: 10%;
         display: flex;
-        border-radius: 10px;
+        border-radius: 5px;
         width: 80%;
         height: 40px;
         padding-left: 10px;
@@ -59,9 +71,10 @@
     }
 
     #nome .Data {
+        font: 500 1.0rem Montserrat;
         margin-left: 10%;
         display: flex;
-        border-radius: 10px;
+        border-radius: 5px;
         height: 40px;
         padding-left: 10px;
         outline: 0;
@@ -69,29 +82,48 @@
     }
 
     #nome .PrioridadeLow {
-        margin-left: 10%;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5%;
+        margin-left: 20%;
         cursor: pointer;
     }
 
     #nome .PrioridadeMedium {
+        display: inline;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
     }
 
     #nome .PrioridadeHigh {
+        display: inline;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
     }
 
     #nome .label-low {
+        display: inline;
+        justify-content: center;
+        align-items: center;
         padding-left: 10px;
         padding-right: 40px;
     }
 
     #nome .label-medium {
+        display: inline;
+        justify-content: center;
+        align-items: center;
         padding-left: 10px;
         padding-right: 40px;
     }
 
     #nome .label-high {
+        display: inline;
+        justify-content: center;
+        align-items: center;
         padding-left: 10px;
         padding-right: 40px;
     }
@@ -99,20 +131,20 @@
     #nome .Processo {
         align-items: center;
         justify-content: center;
-        margin-left: 30%;
+        display: inline;
+        margin-left: 35%;
         margin-top: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 5%;
         cursor: pointer;
     }
 
     #nome .label-processo {
         align-items: center;
         justify-content: center;
-        margin-top: 10px;
-        padding-left: 10px;
-        padding-right: 20px;
-        font-weight: 40px;
-        font: 700 1.5rem Montserrat;
+        margin-top: 10%;
+        margin-left: 5%;
+        font: 700 1.25rem Montserrat;
+        font-style: italic;
     }
 
     #nome .save-button {
@@ -121,10 +153,11 @@
         align-items: center;
         background-color: #407AFF;
         color: white;
-        width: 35%;
-        margin-left: 32.5%;
+        width: 45%;
+        margin-left: 27.5%;
+        margin-bottom: 5%;
         height: 50px;
-        margin-top: 10px;
+        margin-top: 5%;
         border-radius: 10px;
         outline: 0;
         border: 0;
@@ -138,8 +171,9 @@
     }
 
     .animation {
+        margin-top: 12.5%;
         float: right;
-        margin-right: 3%;
+        margin-right: 5%;
     }
 
     #nome .text {
@@ -150,7 +184,7 @@
 <section>
     <div class="animation">
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_xRmNN8.json" background="transparent" speed="1" style="width: 600px; height: 600px;" loop autoplay></lottie-player>
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_sxrbhrtx.json" background="transparent" speed="1" style="width: 550px; height: 550px;" loop autoplay></lottie-player>
     </div>
     <div class="card">
         <div class="card-header">

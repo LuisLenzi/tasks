@@ -6,8 +6,8 @@
 	<meta name="description" content="Sistema Gerenciador de Tarefas">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
-	<title>Gereciador</title>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+	<title>Gerenciador</title>
 </head>
 
 <style>
@@ -21,7 +21,8 @@
 		padding: 2%;
 		background-color: #407AFF;
 		color: white;
-		font: 700 1.0rem Montserrat;
+		font: 600 1.5rem Montserrat;
+		font-style: italic;
 	}
 
 	.navbar .text {
@@ -75,7 +76,7 @@
 					</button>
 				</div>
 			<?php elseif ($this->view->result == 'DELETE_OK') : ?>
-				<div class="alert alert-sucess" role="alert">
+				<div class="alert alert-success" role="alert">
 					Tarefa deletada com sucesso!
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
