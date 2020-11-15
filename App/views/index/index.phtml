@@ -178,6 +178,88 @@
 	#nome .text {
 		margin-left: 10%;
 	}
+
+	.modal-container {
+		width: 100vw;
+		height: 100vh;
+		color: rgba(0, 0, 0, 5);
+		position: fixed;
+		top: 32.5%;
+		left: 32.5%;
+		z-index: 2000;
+		display: none;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.modal-gui {
+		background: white;
+		width: 30%;
+		min-width: 400px;
+		padding: 45px;
+		border: 10px solid #407AFF;
+		color: black;
+		position: relative;
+		text-align: center;
+	}
+
+	.modal-title{
+		padding-top: 5%;
+		font: 500 1.75rem Montserrat;
+	}
+
+	.modal-subtitle{
+		font: 500 1rem Montserrat;
+		padding-bottom: 5%;
+	}
+
+	.button-sn1 {
+		position: relative;
+		margin-bottom: 0.4%;
+		margin-right: 2%;
+		padding: 5%;
+		width: 45%;
+		background-color: #407AFF;
+		color: white;
+		font: 600 1rem Montserrat;
+		font-style: italic;
+		text-align: center;
+		border-radius: 10px;
+		outline: 0;
+		border: 0;
+	}
+
+	.button-sn1:hover {
+		opacity: 90%;
+		cursor: pointer;
+		color: white;
+		transform: scale(1.05);
+		transition: 1s;
+	}
+
+	.button-sn2 {
+		position: relative;
+		margin-bottom: 0.4%;
+		margin-left: 2%;
+		padding: 5%;
+		width: 45%;
+		background-color: #407AFF;
+		color: white;
+		border-radius: 10px;
+		outline: 0;
+		border: 0;
+		font: 600 1rem Montserrat;
+		font-style: italic;
+		text-align: center;
+	}
+
+	.button-sn2:hover {
+		opacity: 90%;
+		color: white;
+		cursor: pointer;
+		transform: scale(1.05);
+		transition: 1s;
+	}
 </style>
 
 <section>
@@ -258,7 +340,6 @@
 			font: 400 1.1rem Montserrat;
 
 		}
-
 	</style>
 	<h2 class="title-tarefas">Tarefas</h2>
 	<small class="subtitle-tarefas">Abaixo, você poderá visualizar uma lista detalhada dos cadastros</small>
@@ -289,13 +370,31 @@
 							<a href="/edit/<?= $taskItem['ID'] ?>" class="btn btn-warning">Editar</a>
 						</td>
 						<td>
-							<a href="/delete/<?= $taskItem['ID'] ?>" class="btn btn-danger">Apagar</a>
+							<a data-toggle="modal" data-target="#modal-mensagem" class=" btn btn-danger">Apagar</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
-		</table>
+			<div class="modal-container" id="modal-mensagem">
+				<div class="modal-gui">
+					<h3 class="modal-title">Exclusão de registro</h3>
+					<h4 class="modal-subtitle">Deseja realmente excluir?</h4>
+					<form>
+						<a type="button" class="button-sn1" href="/delete/<?= $taskItem['ID'] ?>">Sim</a>
+						<a type="button" class="button-sn2" data-dismiss="modal">Não</a>
+					</form>
+				</div>
+			</div>
+	</div>
+	</div>
+	</div>
 	</div>
 </section>
+
+<script>
+	$("#btn-mensagem").click(function() {
+		$("#modal-mensagem").modal();
+	});
+</script>
 
 </html>
