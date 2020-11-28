@@ -20,13 +20,25 @@ class Index extends Action
 
 	public function index()
 	{
-		if (!is_null($this->getParam())) {
+		if(!is_null($this->getParam())) {
 			$this->view->result = $this->getParam();
 		}
-		$this->view->taskList = $this->task->fetchAll();
+
+		$param = false;
+		if(!is_null($this->getParam()) && $this->getParam() == 'notFinished') {
+			$param = true;
+		}
+		if(!is_null($this->getParam()) && $this->getParam() == 'all') {
+			$param = false;
+		}
+
+
+		$this->view->taskList = $this->task->fetchAll($param);
 		TaskFormat::taskListFormat($this->view->taskList);
+
 		$this->form->setAction('index');
 		$this->view->form = $this->form;
+		
 		$this->render('index');
 	}
 
@@ -82,5 +94,15 @@ class Index extends Action
 		}
 
 		$this->redirect("/index/{$deleteResult}");
+	}
+
+	public function finish(){
+		$this->task->changeFinish($this->getParam());
+		$this->redirect("/index");
+	}
+
+	public function priority(){
+		$this->task->changePriority($this->getParam());
+		$this->redirect("/index");
 	}
 }

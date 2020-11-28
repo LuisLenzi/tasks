@@ -35,13 +35,25 @@ class Init extends Bootstrap
 		$taskRoutes['update'] = [
 			'route' => '/update',
 			'controller' => 'index',
-			'action' => 'update'	
-		 ];
+			'action' => 'update'
+		];
 
 		$taskRoutes['delete'] = [
 			'route' => '/delete',
 			'controller' => 'index',
 			'action' => 'delete'
+		];
+
+		$taskRoutes['priority'] = [
+			'route' => '/priority',
+			'controller' => 'index',
+			'action' => 'priority'
+		];
+
+		$taskRoutes['finish'] = [
+			'route' => '/finish',
+			'controller' => 'index',
+			'action' => 'finish'
 		];
 
 		$this->setRoutes($taskRoutes);

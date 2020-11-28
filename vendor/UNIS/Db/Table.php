@@ -31,7 +31,7 @@ abstract class Table
 		}
 	}
 
-	public function fetchAll()
+	public function fetchAll($param = false)
 	{
 		//busca todas as tarefas do banco
 		$query = "SELECT * FROM {$this->table}";

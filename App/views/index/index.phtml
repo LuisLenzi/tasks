@@ -275,7 +275,6 @@
 			<!-- Formulário cadastrar as tarefas-->
 			<p class="card-text"><small class="text-muted">Preencha o formulário abaixo para fazer seu cadastro</small></p>
 			<form name="cadastrar" id="nome" method="POST" action="/add">
-				<!--ID/id-->
 				<input type="hidden" id="id" name="id" value="<?= $this->view->taskEdit['ID'] ?? ''; ?>" />
 				<!--Nome/Name-->
 				<label class="text" for="Nome">Nome da tarefa<sup class="text-danger"></sup></label>
@@ -283,24 +282,37 @@
 				<br />
 				<!--Descricao/Description-->
 				<label class="text" for="Definicao">Definição da tarefa<sup class="text-danger"></sup></label>
-				<input class="Definicao" type="text" name="Definicao" id="Definicao" required />
+				<input class="Definicao" type="text" name="Definicao" id="Definicao" value="<?= $this->view->taskEdit['Definicao'] ?? ''; ?>" />
 				<br />
 				<!--Prazo/Due-->
-				<label class="text" for="Prazo">Data <sup class="text-danger"></sup></label>
-				<input class="Data" type="date" name="Data" id="Data" required />
+				<label class=" text" for="Prazo">Data <sup class="text-danger"></sup></label>
+				<input class="Data" type="date" name="Data" id="Data" value="<?= $this->view->taskEdit['Data'] ?? ''; ?>" />
 				<br />
 				<!--Prioridade/Priority-->
-				<input class="PrioridadeLow" type="radio" name="Prioridade" id="low" value="Baixa" />
+				<input class=" PrioridadeLow" type="radio" name="Prioridade" id="low" value="Baixa" <?= (isset($this->view->taskEdit) &&
+																										$this->view->taskEdit['Prioridade'] == 'Baixa') ?
+																										'checked' :
+																										''; ?> />
 				<label class="label-low" for="low">Baixa</label>
 
-				<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="Média" />
+				<input class="PrioridadeMedium" type="radio" name="Prioridade" id="medium" value="Média" <?= (isset($this->view->taskEdit) &&
+																												$this->view->taskEdit['Prioridade'] == 'Média') ?
+																												'checked' :
+																												''; ?> />
 				<label class="label-medium" for="medium">Média</label>
 
-				<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="Alta" />
+				<input class="PrioridadeHigh" type="radio" name="Prioridade" id="high" value="Alta" <?= (isset($this->view->taskEdit) &&
+																										$this->view->taskEdit['Prioridade'] == 'Alta') ?
+																										'checked' :
+																										''; ?> />
 				<label class="label-high" for="high">Alta</label>
 				<br />
 				<!--Finalizada/Finished-->
-				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="Finalizada" />
+				<input class="Processo" type="checkbox" name="Processo" id="Processo" value="1" <?= (isset($this->view->taskEdit) &&
+																									$this->view->taskEdit['Processo'] == 1) ?
+																									'checked' :
+																									'';
+																								?> />
 				<label class="label-processo" for="Processo">Finalizada?</label>
 				<br />
 				<!--Botão Salvar-->
@@ -364,8 +376,16 @@
 						<td><?= $taskItem['Nome'] ?></td>
 						<td><?= $taskItem['Definicao'] ?></td>
 						<td><?= $taskItem['Data'] ?></td>
-						<td><?= $taskItem['Prioridade'] ?></td>
-						<td><?= $taskItem['Processo'] ?></td>
+						<td>
+							<a href="/priority/<?= $taskItem['ID'] ?>">
+								<?= $taskItem['Prioridade'] ?>
+							</a>
+						</td>
+						<td>
+							<a href="/finish/<?= $taskItem['ID'] ?>">
+								<?= $taskItem['Processo'] ?>
+							</a>
+						</td>
 						<td>
 							<a href="/edit/<?= $taskItem['ID'] ?>" class="btn btn-warning">Editar</a>
 						</td>
@@ -377,11 +397,20 @@
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Apagar Item</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataConfirmOK">Apagar</a></div></div></div></div>
-	</div>
-	</div>
-	</div>
-	</div>
+		</table>
+		<a class="btn btn-info text-white" href="/index/notFinished">Exibir só as em aberto</a>
+				<a class="btn btn-info text-white" href="/index/all">Exibir Todas</a>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Apagar Item</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body" id="modal-body"></div>
+					<div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataConfirmOK">Apagar</a></div>
+				</div>
+			</div>
+		</div>
 </section>
 
 </html>
