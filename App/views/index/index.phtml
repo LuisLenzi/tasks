@@ -203,12 +203,12 @@
 		text-align: center;
 	}
 
-	.modal-title{
+	.modal-title {
 		padding-top: 5%;
 		font: 500 1.75rem Montserrat;
 	}
 
-	.modal-subtitle{
+	.modal-subtitle {
 		font: 500 1rem Montserrat;
 		padding-bottom: 5%;
 	}
@@ -370,31 +370,18 @@
 							<a href="/edit/<?= $taskItem['ID'] ?>" class="btn btn-warning">Editar</a>
 						</td>
 						<td>
-							<a data-toggle="modal" data-target="#modal-mensagem" class=" btn btn-danger">Apagar</a>
+							<a href="/delete/<?= $taskItem['ID'] ?>" class="btn btn-danger btn-sm" data-confirm="Você tem certeza que deseja apagar o item selecionado?" id="clickroute">
+								Apagar
+							</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
-			<div class="modal-container" id="modal-mensagem">
-				<div class="modal-gui">
-					<h3 class="modal-title">Exclusão de registro</h3>
-					<h4 class="modal-subtitle">Deseja realmente excluir?</h4>
-					<form>
-						<a type="button" class="button-sn1" href="/delete/<?= $taskItem['ID'] ?>">Sim</a>
-						<a type="button" class="button-sn2" data-dismiss="modal">Não</a>
-					</form>
-				</div>
-			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="exampleModalLabel">Apagar Item</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><a class="btn btn-danger text-white" id="dataConfirmOK">Apagar</a></div></div></div></div>
 	</div>
 	</div>
 	</div>
 	</div>
 </section>
-
-<script>
-	$("#btn-mensagem").click(function() {
-		$("#modal-mensagem").modal();
-	});
-</script>
 
 </html>
